@@ -10,8 +10,8 @@ namespace ReportManager.Domain.Entities
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
-        public decimal amount { get; set; }
-        public DateTime date { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }

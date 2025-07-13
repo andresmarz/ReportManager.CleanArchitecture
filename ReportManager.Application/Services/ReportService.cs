@@ -10,7 +10,54 @@ using ReportManager.Domain.Interfaces;
 
 namespace ReportManager.Application.Services
 {
-    public class ReportService
+    public class ReportService : IReportService
     {
+        private readonly IReportRepository _repository;
+        public ReportService(IReportRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<IEnumerable<ReportDto>> GetReportsAsync()
+        {
+            var reports = await _repository.GetAllAsync();
+            return reports.Select(r => new ReportDto
+            {
+                Title = r.Title,
+                Amount = r.Amount,
+                Date = r.Date
+
+            });
+        }
+
+        public async Task<ReportDto?> GetReportByIdAsync(int id)
+        {
+            var report = await _repository.GetByIdAsync(id);
+            if (report == null) return null;
+
+            return new ReportDto
+            {
+                Title = report.Title,
+                Amount = report.Amount,
+                Date = report.Date
+            };
+        }
+        public Task AddReportAsync(ReportDto report)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteReportAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        
+        public Task UpdateReportAsync(int id, ReportDto report)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
