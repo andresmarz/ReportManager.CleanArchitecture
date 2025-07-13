@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReportManager.Application.DTOs
 {
-    internal class ReportDto
+    public class ReportDto
     {
         public string Title { get; set; } = string.Empty;
         public decimal Amount { get; set; }

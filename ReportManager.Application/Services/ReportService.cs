@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReportManager.Application.Services
 {
-    internal class ReportService
+    public class ReportService
     {
     }
 }
