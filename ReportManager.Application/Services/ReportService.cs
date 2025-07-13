@@ -54,9 +54,15 @@ namespace ReportManager.Application.Services
             await _repository.AddAsync(report);
         }
 
-        public Task UpdateReportAsync(int id, ReportDto report)
+        public async Task UpdateReportAsync(int id, ReportDto dto)
         {
-            throw new NotImplementedException();
+            var report = await _repository.GetByIdAsync(id);
+            if (report == null) return;
+
+            report.Title = dto.Title;
+            report.Amount = dto.Amount;
+            report.Date = dto.Date;
+            await _repository.UpdateAsync(report);
         }
         public Task DeleteReportAsync(int id)
         {

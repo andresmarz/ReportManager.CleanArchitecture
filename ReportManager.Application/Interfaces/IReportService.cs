@@ -12,7 +12,7 @@ namespace ReportManager.Application.Interfaces
         Task<IEnumerable<ReportDto>> GetReportsAsync();
         Task<ReportDto?> GetReportByIdAsync(int id);
         Task CreateReportAsync(ReportDto report);
-        Task UpdateReportAsync(int id, ReportDto report);
+        Task UpdateReportAsync(int id, ReportDto dto);
         Task DeleteReportAsync(int id);
 
     }
