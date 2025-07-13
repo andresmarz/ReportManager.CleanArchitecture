@@ -64,9 +64,9 @@ namespace ReportManager.Application.Services
             report.Date = dto.Date;
             await _repository.UpdateAsync(report);
         }
-        public Task DeleteReportAsync(int id)
+        public async Task DeleteReportAsync(int id)
         {
-            throw new NotImplementedException();
+            await _repository.DeleteAsync(id);
         }                    
        
     }
