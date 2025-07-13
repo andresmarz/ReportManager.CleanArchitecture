@@ -11,7 +11,7 @@ namespace ReportManager.Application.Interfaces
     {
         Task<IEnumerable<ReportDto>> GetReportsAsync();
         Task<ReportDto?> GetReportByIdAsync(int id);
-        Task AddReportAsync(ReportDto report);
+        Task CreateReportAsync(ReportDto report);
         Task UpdateReportAsync(int id, ReportDto report);
         Task DeleteReportAsync(int id);
 

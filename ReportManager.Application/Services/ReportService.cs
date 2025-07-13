@@ -42,22 +42,26 @@ namespace ReportManager.Application.Services
                 Date = report.Date
             };
         }
-        public Task AddReportAsync(ReportDto report)
+        public async Task CreateReportAsync(ReportDto dto)
         {
-            throw new NotImplementedException();
+            var report = new Report
+            {
+                Title = dto.Title,
+                Amount = dto.Amount,
+                Date = dto.Date
+            };
+
+            await _repository.AddAsync(report);
         }
 
-        public Task DeleteReportAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
-        
         public Task UpdateReportAsync(int id, ReportDto report)
         {
             throw new NotImplementedException();
         }
+        public Task DeleteReportAsync(int id)
+        {
+            throw new NotImplementedException();
+        }                    
+       
     }
 }
