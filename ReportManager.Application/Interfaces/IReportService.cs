@@ -1,9 +1,4 @@
 ﻿using ReportManager.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportManager.Application.Interfaces
 {
@@ -11,9 +6,8 @@ namespace ReportManager.Application.Interfaces
     {
         Task<IEnumerable<ReportDto>> GetReportsAsync();
         Task<ReportDto?> GetReportByIdAsync(int id);
-        Task CreateReportAsync(ReportDto report);
-        Task UpdateReportAsync(int id, ReportDto dto);
+        Task AddReportAsync(CreateReportDto dto);
+        Task UpdateReportAsync(int id, CreateReportDto dto);
         Task DeleteReportAsync(int id);
-
     }
 }
