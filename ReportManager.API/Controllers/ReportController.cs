@@ -38,7 +38,7 @@ public class ReportController : ControllerBase
     public async Task<IActionResult> CreateReport(CreateReportDto dto)
     {
         await _reportService.CreateReportAsync(dto);
-        return Ok();
+        return CreatedAtAction(nameof(GetById), new { id = dto.Title }, dto);
     }
 
     
