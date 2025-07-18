@@ -33,7 +33,7 @@ public class ReportController : ControllerBase
         return Ok(report);
     }
 
-
+    //POSTT: api/Report
     [HttpPost]
     public async Task<IActionResult> CreateReport(CreateReportDto dto)
     {
@@ -41,12 +41,19 @@ public class ReportController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = dto.Title }, dto);
     }
 
-
+    //PUT: api/Report/5
     [HttpPut]
     public async Task<IActionResult> UpdateReport(int id, CreateReportDto dto)
     {
         await _reportService.UpdateReportAsync(id, dto);
         return NoContent();
     }
-    
+
+    //DELETE: api/Report/5
+    [HttpDelete]
+    public async Task<IActionResult> DeleteReport(int id)
+    {
+        await _reportService.DeleteReportAsync(id);
+        return NoContent();
+    }
 }
