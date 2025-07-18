@@ -33,12 +33,12 @@ public class ReportController : ControllerBase
         return Ok(report);
     }
 
-    //POSTT: api/Report
+    //POST: api/Report
     [HttpPost]
     public async Task<IActionResult> CreateReport(CreateReportDto dto)
     {
-        await _reportService.CreateReportAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = dto.Title }, dto);
+        int id = await _reportService.CreateReportAsync(dto);
+        return CreatedAtAction(nameof(GetById), new { id = id }, dto);
     }
 
     //PUT: api/Report/5

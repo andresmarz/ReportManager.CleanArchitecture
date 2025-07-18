@@ -42,7 +42,7 @@ namespace ReportManager.Application.Services
                 Date = report.Date
             };
         }
-        public async Task CreateReportAsync(CreateReportDto dto)
+        public async Task<int> CreateReportAsync(CreateReportDto dto)
         {
             var report = new Report
             {
@@ -52,6 +52,7 @@ namespace ReportManager.Application.Services
             };
 
             await _repository.AddAsync(report);
+            return report.Id;
         }
 
         public async Task UpdateReportAsync(int id, CreateReportDto dto)
