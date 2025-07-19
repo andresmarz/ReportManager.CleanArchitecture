@@ -23,7 +23,6 @@ public class ReportController : ControllerBase
         return Ok(reports);
     }
 
-
     //GET: api/report/5
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
