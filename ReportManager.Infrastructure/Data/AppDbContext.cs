@@ -14,5 +14,6 @@ namespace ReportManager.Infrastructure.Data
             : base(options) { }
 
         public DbSet<Report> Reports => Set<Report>();
+        public DbSet<User> Users => Set<User>();
     }
 }
