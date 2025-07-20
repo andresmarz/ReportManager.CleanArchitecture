@@ -8,9 +8,9 @@ using ReportManager.Application.Interfaces;
 
 namespace ReportManager.Application.Interfaces
 {
-    public class IAuthService
+    public interface IAuthService
     {
         string GenerateToken(string username);
-        Task<bool> ValidateUserLogin(LoginDto loginDto);
+        Task<bool> ValidateUserAsync(LoginDto loginDto);
     }
 }

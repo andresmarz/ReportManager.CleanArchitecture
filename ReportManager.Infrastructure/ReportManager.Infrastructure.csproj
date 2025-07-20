@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReportManager.Application\ReportManager.Application.csproj" />
     <ProjectReference Include="..\ReportManager.Domain\ReportManager.Domain.csproj" />
   </ItemGroup>
 
