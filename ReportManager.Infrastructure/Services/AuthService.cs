@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ReportManager.Application.DTOs;
 using ReportManager.Application.Interfaces;
@@ -22,7 +23,8 @@ namespace ReportManager.Infrastructure.Services
 
         public async Task<bool> ValidateUserAsync(LoginDto loginDto)
         {
-            var user = await _context.Users.FindAsync(loginDto.Username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == loginDto.Username);
+
             if (user == null) return false;
 
             return user.Password == loginDto.Password; // por ahora sin hash
