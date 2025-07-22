@@ -28,5 +28,16 @@ namespace ReportManager.API.Controllers
 
             return Ok(new { token });
         }
+
+        //POST: api/Auth/register
+        [HttpPost("register")]
+        public async Task<IActionResult> register(RegisterDto registerDto)
+        {
+            var success = await _authService.RegisterUserAsync(registerDto);
+            if (!success)
+                return BadRequest("User already exists");
+
+            return Ok("User created");
+        } 
     }
 }

@@ -54,8 +54,10 @@ namespace ReportManager.Infrastructure.Services
 
         public async Task<bool> RegisterUserAsync(RegisterDto registerDto)
         {
-            var existingUser = await _context.Users.FindAsync(registerDto.Username);
-            if (existingUser == null) return false;
+            var existingUser = await _context.Users
+                .FirstOrDefaultAsync(u => u.Username == registerDto.Username);
+
+            if (existingUser != null) return false;
 
             var user = new User
             {
