@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ReportManager.Application.DTOs;
 using ReportManager.Application.Interfaces;
+using ReportManager.Domain.Entities;
 using ReportManager.Infrastructure.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -50,5 +51,24 @@ namespace ReportManager.Infrastructure.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        public async Task<bool> RegisterUserAsync(RegisterDto registerDto)
+        {
+            var existingUser = await _context.Users.FindAsync(registerDto.Username);
+            if (existingUser == null) return false;
+
+            var user = new User
+            {
+                Username = registerDto.Username,
+                Password = registerDto.Password //without hash for now
+            };
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+            return true;
+
+
+        }
+
     }
 }
