@@ -12,5 +12,6 @@ namespace ReportManager.Application.Interfaces
     {
         string GenerateToken(string username);
         Task<bool> ValidateUserAsync(LoginDto loginDto);
+        Task<bool> RegisterUserAsync(RegisterDto registerDto);
     }
 }
